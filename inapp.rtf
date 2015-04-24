@@ -1,0 +1,1132 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fnil\fcharset0 LucidaGrande;\f1\ftech\fcharset77 Symbol;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red63\green110\blue116;\red38\green71\blue75;
+\red92\green38\blue153;\red46\green13\blue110;\red196\green26\blue22;\red0\green116\blue0;\red28\green0\blue207;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab360
+\pard\tx360\pardeftab360\pardirnatural
+
+\f0\fs36 \cf0 \CocoaLigature0 -
+\f1 (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 restore
+\f1 \
+\{\
+    
+\f0 \cf3 hud
+\f1 2\cf0  = [
+\f0 \cf3 MBProgressHUD
+\f1 \cf0  
+\f0 \cf4 showHUDAddedTo
+\f1 \cf0 :
+\f0 \cf2 self
+\f1 \cf0 .
+\f0 \cf5 view
+\f1 \cf0  
+\f0 \cf4 animated
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+    
+\f0 \cf3 hud
+\f1 2\cf0 .
+\f0 \cf3 dimBackground
+\f1 \cf0  = 
+\f0 \cf2 YES
+\f1 \cf0 ;\
+    
+\f0 \cf3 hud
+\f1 2\cf0 .
+\f0 \cf3 delegate
+\f1 \cf0  = 
+\f0 \cf2 self
+\f1 \cf0 ;\
+    [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 show
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+    [[
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 defaultQueue
+\f1 \cf0 ] 
+\f0 \cf6 addTransactionObserver
+\f1 \cf0 :
+\f0 \cf2 self
+\f1 \cf0 ];\
+    [[
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 defaultQueue
+\f1 \cf0 ]
+\f0 \cf6 restoreCompletedTransactions
+\f1 \cf0 ];\
+\}\
+
+\f0 -
+\f1 (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 fetchAvailableProducts
+\f1 \
+\{\
+    
+\f0 \cf3 hud
+\f1 2\cf0  = [
+\f0 \cf3 MBProgressHUD
+\f1 \cf0  
+\f0 \cf4 showHUDAddedTo
+\f1 \cf0 :
+\f0 \cf2 self
+\f1 \cf0 .
+\f0 \cf5 view
+\f1 \cf0  
+\f0 \cf4 animated
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+    
+\f0 \cf3 hud
+\f1 2\cf0 .
+\f0 \cf3 dimBackground
+\f1 \cf0  = 
+\f0 \cf2 YES
+\f1 \cf0 ;\
+    
+\f0 \cf3 hud
+\f1 2\cf0 .
+\f0 \cf3 delegate
+\f1 \cf0  = 
+\f0 \cf2 self
+\f1 \cf0 ;\
+    [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 show
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+\
+    
+\f0 \cf5 NSSet
+\f1 \cf0  
+\f0 *productIdentifiers
+\f1  = [
+\f0 \cf5 NSSet
+\f1 \cf0 \
+                                 
+\f0 \cf6 setWithObjects
+\f1 \cf0 :
+\f0 \cf7 @"com
+\f1 .
+\f0 calenderevent
+\f1 .
+\f0 app"
+\f1 \cf0 ,
+\f0 \cf2 nil
+\f1 \cf0 ];\
+    
+\f0 \cf3 productrequest
+\f1 \cf0  = [[
+\f0 \cf5 SKProductsRequest
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ]\
+                      
+\f0 \cf6 initWithProductIdentifiers
+\f1 \cf0 :
+\f0 productIdentifiers
+\f1 ];\
+    
+\f0 \cf3 productrequest
+\f1 \cf0 .
+\f0 \cf5 delegate
+\f1 \cf0  = 
+\f0 \cf2 self
+\f1 \cf0 ;\
+    [
+\f0 \cf3 productrequest
+\f1 \cf0    
+\f0 \cf6 start
+\f1 \cf0 ];\
+\
+\cf8 //    
+\f0 iaprestorealert
+\f1 =[[
+\f0 UIAlertView
+\f1  
+\f0 alloc
+\f1 ]
+\f0 initWithTitle
+\f1 :
+\f0 @"Buy"
+\f1  
+\f0 message
+\f1 :
+\f0 @"buy"
+\f1  
+\f0 delegate
+\f1 :
+\f0 self
+\f1  
+\f0 cancelButtonTitle
+\f1 :
+\f0 @"Restore"
+\f1  
+\f0 otherButtonTitles
+\f1 :
+\f0 nil
+\f1 ];\cf0 \
+\cf8 //    [
+\f0 iaprestorealert
+\f1  
+\f0 show
+\f1 ];\cf0 \
+    \
+\}\
+\
+
+\f0 -
+\f1  (
+\f0 \cf2 BOOL
+\f1 \cf0 )
+\f0 canMakePurchases
+\f1 \
+\{\
+    
+\f0 \cf2 return
+\f1 \cf0  [
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 canMakePayments
+\f1 \cf0 ];\
+\}\
+
+\f0 -
+\f1  (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 purchaseMyProduct
+\f1 :(
+\f0 \cf5 SKProduct\cf0 *
+\f1 )
+\f0 product
+\f1 \
+\{\
+    
+\f0 \cf2 if
+\f1 \cf0  ([
+\f0 \cf2 self
+\f1 \cf0  
+\f0 \cf4 canMakePurchases
+\f1 \cf0 ])\
+    \{\
+        
+\f0 \cf5 SKPayment
+\f1 \cf0  
+\f0 *payment
+\f1  = [
+\f0 \cf5 SKPayment
+\f1 \cf0  
+\f0 \cf6 paymentWithProduct
+\f1 \cf0 :
+\f0 product
+\f1 ];\
+        [[
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 defaultQueue
+\f1 \cf0 ] 
+\f0 \cf6 addTransactionObserver
+\f1 \cf0 :
+\f0 \cf2 self
+\f1 \cf0 ];\
+        [[
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 defaultQueue
+\f1 \cf0 ] 
+\f0 \cf6 addPayment
+\f1 \cf0 :
+\f0 payment
+\f1 ];\
+    \}\
+    
+\f0 \cf2 else
+\f1 \cf0 \
+    \{\
+        
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 *alertView
+\f1  = [[
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ]
+\f0 \cf6 initWithTitle
+\f1 \cf0 :\
+                                  
+\f0 \cf7 @"Purchases
+\f1  
+\f0 are
+\f1  
+\f0 disabled
+\f1  
+\f0 in
+\f1  
+\f0 your
+\f1  
+\f0 device"
+\f1 \cf0  
+\f0 \cf6 message
+\f1 \cf0 :
+\f0 \cf2 nil
+\f1 \cf0  
+\f0 \cf6 delegate
+\f1 \cf0 :\
+                                  
+\f0 \cf2 self
+\f1 \cf0  
+\f0 \cf6 cancelButtonTitle
+\f1 \cf0 :
+\f0 \cf7 @"Ok"
+\f1 \cf0  
+\f0 \cf6 otherButtonTitles
+\f1 \cf0 : 
+\f0 \cf2 nil
+\f1 \cf0 ];\
+        [
+\f0 alertView
+\f1  
+\f0 \cf6 show
+\f1 \cf0 ];\
+    \}\
+\}\
+
+\f0 -
+\f1 (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 paymentQueue
+\f1 :(
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 queue
+\f1 \
+
+\f0 updatedTransactions
+\f1 :(
+\f0 \cf5 NSArray
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 transactions
+\f1 \
+\{\
+    
+\f0 \cf2 for
+\f1 \cf0  (
+\f0 \cf5 SKPaymentTransaction
+\f1 \cf0  
+\f0 *transaction
+\f1  
+\f0 \cf2 in
+\f1 \cf0  
+\f0 transactions
+\f1 )\
+    \{\
+        
+\f0 \cf2 switch
+\f1 \cf0  (
+\f0 transaction
+\f1 .
+\f0 \cf5 transactionState
+\f1 \cf0 )\
+        \{\
+            
+\f0 \cf2 case
+\f1 \cf0  
+\f0 \cf6 SKPaymentTransactionStatePurchasing
+\f1 \cf0 :\
+                
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"Purchasing"
+\f1 \cf0 );\
+                
+\f0 \cf2 break
+\f1 \cf0 ;\
+            
+\f0 \cf2 case
+\f1 \cf0  
+\f0 \cf6 SKPaymentTransactionStatePurchased
+\f1 \cf0 :\
+                
+\f0 \cf2 if
+\f1 \cf0  ([
+\f0 transaction
+\f1 .
+\f0 \cf5 payment
+\f1 \cf0 .
+\f0 \cf5 productIdentifier
+\f1 \cf0 \
+                     
+\f0 \cf6 isEqualToString
+\f1 \cf0 :
+\f0 \cf7 @"com
+\f1 .
+\f0 calenderevent
+\f1 .
+\f0 app"
+\f1 \cf0 ])\
+                \{\
+                    
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"Purchased
+\f1  
+\f0 "
+\f1 \cf0 );\
+                    [
+\f0 \cf3 bannerView
+\f1 _\cf0  
+\f0 \cf6 removeFromSuperview
+\f1 \cf0 ];\
+                    [
+\f0 \cf3 btn
+\f1 \cf0  
+\f0 \cf6 removeFromSuperview
+\f1 \cf0 ];\
+                    [
+\f0 \cf3 restorebutton
+\f1 \cf0  
+\f0 \cf6 removeFromSuperview
+\f1 \cf0 ];\
+                    [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 hide
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+                
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 *alertView
+\f1  = [[
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ]
+\f0 \cf6 initWithTitle
+\f1 \cf0 :\
+                                              
+\f0 \cf7 @"Purchase
+\f1  
+\f0 is
+\f1  
+\f0 completed
+\f1  
+\f0 succesfully"
+\f1 \cf0  
+\f0 \cf6 message
+\f1 \cf0 :
+\f0 \cf2 nil
+\f1 \cf0  
+\f0 \cf6 delegate
+\f1 \cf0 :\
+                                              
+\f0 \cf2 self
+\f1 \cf0  
+\f0 \cf6 cancelButtonTitle
+\f1 \cf0 :
+\f0 \cf7 @"Ok"
+\f1 \cf0  
+\f0 \cf6 otherButtonTitles
+\f1 \cf0 : 
+\f0 \cf2 nil
+\f1 \cf0 ];\
+                    [[
+\f0 \cf3 GlobalInstances
+\f1 \cf0  
+\f0 \cf4 sharedInstance
+\f1 \cf0 ]
+\f0 \cf4 saveValueToUserDefaults
+\f1 \cf0 :
+\f0 \cf7 @"
+\f1 1
+\f0 "
+\f1 \cf0  
+\f0 \cf4 forKey
+\f1 \cf0 :
+\f0 \cf7 @"buy"
+\f1 \cf0 ];\
+                \}\
+                [[
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 defaultQueue
+\f1 \cf0 ]
+\f0 \cf6 finishTransaction
+\f1 \cf0 :
+\f0 transaction
+\f1 ];\
+                
+\f0 \cf2 break
+\f1 \cf0 ;\
+            
+\f0 \cf2 case
+\f1 \cf0  
+\f0 \cf6 SKPaymentTransactionStateRestored
+\f1 \cf0 :\
+                
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"Restored
+\f1  
+\f0 "
+\f1 \cf0 );\
+                [[
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 \cf6 defaultQueue
+\f1 \cf0 ]
+\f0 \cf6 finishTransaction
+\f1 \cf0 :
+\f0 transaction
+\f1 ];\
+                
+\f0 \cf2 break
+\f1 \cf0 ;\
+            
+\f0 \cf2 case
+\f1 \cf0  
+\f0 \cf6 SKPaymentTransactionStateFailed
+\f1 \cf0 :\
+                
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"Purchase
+\f1  
+\f0 failed
+\f1  
+\f0 "
+\f1 \cf0 );\
+                [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 hide
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+                [[
+\f0 \cf3 GlobalInstances
+\f1 \cf0  
+\f0 \cf4 sharedInstance
+\f1 \cf0 ]
+\f0 \cf4 saveValueToUserDefaults
+\f1 \cf0 :
+\f0 \cf7 @"
+\f1 0
+\f0 "
+\f1 \cf0  
+\f0 \cf4 forKey
+\f1 \cf0 :
+\f0 \cf7 @"buy"
+\f1 \cf0 ];\
+                
+\f0 \cf2 break
+\f1 \cf0 ;\
+               
+\f0 \cf2 default
+\f1 \cf0 :\
+                
+\f0 \cf2 break
+\f1 \cf0 ;\
+        \}\
+    \}\
+\}\
+
+\f0 -
+\f1 (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 paymentQueueRestoreCompletedTransactionsFinished
+\f1 :(
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 queue
+\f1 \
+\{\
+    
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"
+\f1 %
+\f0 @"
+\f1 \cf0 ,
+\f0 queue
+\f1  );\
+    
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"Restored
+\f1  
+\f0 Transactions
+\f1  
+\f0 are
+\f1  
+\f0 once
+\f1  
+\f0 again
+\f1  
+\f0 in
+\f1  
+\f0 Queue
+\f1  
+\f0 for
+\f1  
+\f0 purchasing
+\f1  %
+\f0 @"
+\f1 \cf0 ,[
+\f0 queue
+\f1  
+\f0 \cf6 transactions
+\f1 \cf0 ]);\
+    \
+    
+\f0 \cf5 NSMutableArray
+\f1 \cf0  
+\f0 *purchasedItemIDs
+\f1  = [[
+\f0 \cf5 NSMutableArray
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ] 
+\f0 \cf6 init
+\f1 \cf0 ];\
+    
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"received
+\f1  
+\f0 restored
+\f1  
+\f0 transactions
+\f1 : %
+\f0 i"
+\f1 \cf0 , 
+\f0 queue
+\f1 .
+\f0 \cf5 transactions
+\f1 \cf0 .
+\f0 \cf5 count
+\f1 \cf0 );\
+    \
+    
+\f0 \cf2 for
+\f1 \cf0  (
+\f0 \cf5 SKPaymentTransaction
+\f1 \cf0  
+\f0 *transaction
+\f1  
+\f0 \cf2 in
+\f1 \cf0  
+\f0 queue
+\f1 .
+\f0 \cf5 transactions
+\f1 \cf0 )\
+    \{\
+        
+\f0 \cf5 NSString
+\f1 \cf0  
+\f0 *productID
+\f1  = 
+\f0 transaction
+\f1 .
+\f0 \cf5 payment
+\f1 \cf0 .
+\f0 \cf5 productIdentifier
+\f1 \cf0 ;\
+        [
+\f0 purchasedItemIDs
+\f1  
+\f0 \cf6 addObject
+\f1 \cf0 :
+\f0 productID
+\f1 ];\
+        
+\f0 \cf6 NSLog
+\f1 \cf0  (
+\f0 \cf7 @"product
+\f1  
+\f0 id
+\f1  
+\f0 is
+\f1  %
+\f0 @"
+\f1 \cf0  , 
+\f0 productID
+\f1 );\
+        
+\f0 \cf2 if
+\f1 \cf0  ([
+\f0 productID
+\f1  
+\f0 \cf6 isEqualToString
+\f1 \cf0 :
+\f0 \cf7 @"com
+\f1 .
+\f0 calenderevent
+\f1 .
+\f0 app"
+\f1 \cf0 ])\
+        \{\
+            [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 hide
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+            [
+\f0 \cf3 bannerView
+\f1 _\cf0  
+\f0 \cf6 removeFromSuperview
+\f1 \cf0 ];\
+            [
+\f0 \cf3 btn
+\f1 \cf0  
+\f0 \cf6 removeFromSuperview
+\f1 \cf0 ];\
+            [
+\f0 \cf3 restorebutton
+\f1 \cf0  
+\f0 \cf6 removeFromSuperview
+\f1 \cf0 ];\
+            
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 *alert
+\f1 =[[
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ]
+\f0 \cf6 initWithTitle
+\f1 \cf0 :
+\f0 \cf7 @"Success"
+\f1 \cf0  
+\f0 \cf6 message
+\f1 \cf0 :
+\f0 \cf7 @"You've
+\f1  
+\f0 already
+\f1  
+\f0 purchased
+\f1  
+\f0 this
+\f1  
+\f0 item"
+\f1 \cf0  
+\f0 \cf6 delegate
+\f1 \cf0 :
+\f0 \cf2 nil
+\f1 \cf0  
+\f0 \cf6 cancelButtonTitle
+\f1 \cf0 :
+\f0 \cf7 @"Ok"
+\f1 \cf0  
+\f0 \cf6 otherButtonTitles
+\f1 \cf0 :
+\f0 \cf2 nil
+\f1 \cf0 ];\
+            [
+\f0 alert
+\f1  
+\f0 \cf6 show
+\f1 \cf0 ];\
+        [[
+\f0 \cf3 GlobalInstances
+\f1 \cf0  
+\f0 \cf4 sharedInstance
+\f1 \cf0 ]
+\f0 \cf4 saveValueToUserDefaults
+\f1 \cf0 :
+\f0 \cf7 @"
+\f1 1
+\f0 "
+\f1 \cf0  
+\f0 \cf4 forKey
+\f1 \cf0 :
+\f0 \cf7 @"buy"
+\f1 \cf0 ];\
+                       
+\f0 \cf2 break
+\f1 \cf0 ;\
+        \}\
+        
+\f0 \cf2 else
+\f1 \cf0 \
+        \{\
+            
+\f0 \cf5 NSSet
+\f1 \cf0  
+\f0 *productIdentifiers
+\f1  = [
+\f0 \cf5 NSSet
+\f1 \cf0 \
+                                         
+\f0 \cf6 setWithObjects
+\f1 \cf0 :
+\f0 \cf7 @"com
+\f1 .
+\f0 calenderevent
+\f1 .
+\f0 app"
+\f1 \cf0 ,
+\f0 \cf2 nil
+\f1 \cf0 ];\
+            
+\f0 \cf3 productrequest
+\f1 \cf0  = [[
+\f0 \cf5 SKProductsRequest
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ]\
+                              
+\f0 \cf6 initWithProductIdentifiers
+\f1 \cf0 :
+\f0 productIdentifiers
+\f1 ];\
+            
+\f0 \cf3 productrequest
+\f1 \cf0 .
+\f0 \cf5 delegate
+\f1 \cf0  = 
+\f0 \cf2 self
+\f1 \cf0 ;\
+            [
+\f0 \cf3 productrequest
+\f1 \cf0    
+\f0 \cf6 start
+\f1 \cf0 ];\
+        \}\
+        \cf8 // 
+\f0 here
+\f1  
+\f0 put
+\f1  
+\f0 an
+\f1  
+\f0 if
+\f1 /
+\f0 then
+\f1  
+\f0 statement
+\f1  
+\f0 to
+\f1  
+\f0 write
+\f1  
+\f0 files
+\f1  
+\f0 based
+\f1  
+\f0 on
+\f1  
+\f0 previously
+\f1  
+\f0 purchased
+\f1  
+\f0 items
+\f1 \cf0 \
+        \cf8 // 
+\f0 example
+\f1  
+\f0 if
+\f1  ([
+\f0 productID
+\f1  
+\f0 isEqualToString
+\f1 : 
+\f0 @"youruniqueproductidentifier
+\f1 ])\{
+\f0 write
+\f1  
+\f0 files
+\f1 \} 
+\f0 else
+\f1  \{ 
+\f0 nslog
+\f1  
+\f0 sorry
+\f1 \}\cf0 \
+    \}\
+\}\
+
+\f0 -
+\f1 (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 paymentQueue
+\f1 :(
+\f0 \cf5 SKPaymentQueue
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 queue
+\f1  
+\f0 restoreCompletedTransactionsFailedWithError
+\f1 :(
+\f0 \cf5 NSError
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 error
+\f1 \
+\{\
+    [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 hide
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+    
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"cancel"
+\f1 \cf0 );\
+\}\
+
+\f0 -
+\f1 (
+\f0 \cf2 void
+\f1 \cf0 )
+\f0 productsRequest
+\f1 :(
+\f0 \cf5 SKProductsRequest
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 request
+\f1 \
+    
+\f0 didReceiveResponse
+\f1 :(
+\f0 \cf5 SKProductsResponse
+\f1 \cf0  
+\f0 *
+\f1 )
+\f0 response
+\f1 \
+\{\
+    
+\f0 \cf5 SKProduct
+\f1 \cf0  
+\f0 *validProduct
+\f1  = 
+\f0 \cf2 nil
+\f1 \cf0 ;\
+    
+\f0 \cf5 NSUInteger
+\f1 \cf0  
+\f0 count
+\f1  = [
+\f0 response
+\f1 .
+\f0 \cf5 products
+\f1 \cf0  
+\f0 \cf6 count
+\f1 \cf0 ];\
+    
+\f0 \cf2 if
+\f1 \cf0  (
+\f0 count
+\f1 >\cf9 0\cf0 )\
+    \{\
+        
+\f0 \cf3 validProducts
+\f1 \cf0  = 
+\f0 response
+\f1 .
+\f0 \cf5 products
+\f1 \cf0 ;\
+        
+\f0 validProduct
+\f1  = [
+\f0 response
+\f1 .
+\f0 \cf5 products
+\f1 \cf0  
+\f0 \cf6 objectAtIndex
+\f1 \cf0 :\cf9 0\cf0 ];\
+        
+\f0 \cf2 if
+\f1 \cf0  ([
+\f0 validProduct
+\f1 .
+\f0 \cf5 productIdentifier
+\f1 \cf0 \
+             
+\f0 \cf6 isEqualToString
+\f1 \cf0 :
+\f0 \cf7 @"com
+\f1 .
+\f0 calenderevent
+\f1 .
+\f0 app"
+\f1 \cf0 ])\
+        \{\
+            
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"
+\f1 %
+\f0 @"
+\f1 \cf0 ,[
+\f0 \cf5 NSString
+\f1 \cf0  
+\f0 \cf6 stringWithFormat
+\f1 \cf0 :\
+                         
+\f0 \cf7 @"Product
+\f1  
+\f0 Title
+\f1 : %
+\f0 @"
+\f1 \cf0 ,
+\f0 validProduct
+\f1 .
+\f0 \cf5 localizedTitle
+\f1 \cf0 ]);\
+            \
+            
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"
+\f1 %
+\f0 @"
+\f1 \cf0 ,[
+\f0 \cf5 NSString
+\f1 \cf0  
+\f0 \cf6 stringWithFormat
+\f1 \cf0 :\
+                        
+\f0 \cf7 @"Product
+\f1  
+\f0 Desc
+\f1 : %
+\f0 @"
+\f1 \cf0 ,
+\f0 validProduct
+\f1 .
+\f0 \cf5 localizedDescription
+\f1 \cf0 ]);\
+            \
+            
+\f0 \cf6 NSLog
+\f1 \cf0 (
+\f0 \cf7 @"
+\f1 %
+\f0 @"
+\f1 \cf0 ,[
+\f0 \cf5 NSString
+\f1 \cf0  
+\f0 \cf6 stringWithFormat
+\f1 \cf0 :\
+                         
+\f0 \cf7 @"Product
+\f1  
+\f0 Price
+\f1 : %
+\f0 @"
+\f1 \cf0 ,
+\f0 validProduct
+\f1 .
+\f0 \cf5 price
+\f1 \cf0 ]);\
+            [
+\f0 \cf2 self
+\f1 \cf0  
+\f0 \cf4 purchaseMyProduct
+\f1 \cf0 :
+\f0 validProduct
+\f1 ];\
+        \}\
+    \}\
+    
+\f0 \cf2 else
+\f1 \cf0 \
+    \{\
+        [
+\f0 \cf3 hud
+\f1 2\cf0  
+\f0 \cf4 hide
+\f1 \cf0 :
+\f0 \cf2 YES
+\f1 \cf0 ];\
+        
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 *tmp
+\f1  = [[
+\f0 \cf5 UIAlertView
+\f1 \cf0  
+\f0 \cf6 alloc
+\f1 \cf0 ]\
+                            
+\f0 \cf6 initWithTitle
+\f1 \cf0 :
+\f0 \cf7 @"Not
+\f1  
+\f0 Available"
+\f1 \cf0 \
+                            
+\f0 \cf6 message
+\f1 \cf0 :
+\f0 \cf7 @"No
+\f1  
+\f0 products
+\f1  
+\f0 to
+\f1  
+\f0 purchase"
+\f1 \cf0 \
+                            
+\f0 \cf6 delegate
+\f1 \cf0 :
+\f0 \cf2 self
+\f1 \cf0 \
+                            
+\f0 \cf6 cancelButtonTitle
+\f1 \cf0 :
+\f0 \cf2 nil
+\f1 \cf0 \
+                            
+\f0 \cf6 otherButtonTitles
+\f1 \cf0 :
+\f0 \cf7 @"Ok"
+\f1 \cf0 , 
+\f0 \cf2 nil
+\f1 \cf0 ];\
+        [
+\f0 tmp
+\f1  
+\f0 \cf6 show
+\f1 \cf0 ];\
+    \}\
+\}\
+}
